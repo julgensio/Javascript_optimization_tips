@@ -1,5 +1,4 @@
 // todo: #################### Utility Functions are time savers ####################
-// log = console.log;
 // !Abstract functions that you can in many applications
 
 // Benefits:
@@ -7,7 +6,6 @@
 // ? 2) Reduce tedious typing down to a simple function call
 
 // ? Import own models ##########
-// import {log, userBase} from utils.js
 
 // ! Or in a utility class as method to call upon
 class Utils {
@@ -15,6 +13,7 @@ class Utils {
 		// do stuff
 	}
 }
+
 Utils.myFunction();
 
 // * 1) ##########  proper case ##########
@@ -53,8 +52,9 @@ const sanitizerInput = (inputValue) => {
 	div.textContent = inputValue;
 	return div.innerHTML;
 };
-// Escape special characters for the dirtyInput
-// Output = app.js:28 &lt;script&gt;alert('xss attack')&lt;/script&gt;&amp;othervalues
+
+// ? Escape special characters for the dirtyInput
+// HTML Output = app.js:28 &lt;script&gt;alert('xss attack')&lt;/script&gt;&amp;othervalues
 const dirtyInput = "<script>alert('xss attack')</script>&othervalues";
 const cleanInput = sanitizerInput(dirtyInput);
 log(cleanInput);
@@ -62,8 +62,6 @@ log(cleanInput);
 // * 6) ########## Create an element with an OPTIONAL CSS class ##########
 const createElement = (tag, className) => {
 	const el = document.createElement(tag);
-
-	// return className ? el.classList.add(className) : el;
 	if (className) el.classList.add(className);
 	return el;
 };
@@ -93,15 +91,16 @@ const addClassName = (selector, className, scope) => {
 	(scope || document).querySelector(selector).classList.add(className);
 };
 
-//  Add th
+// ! Call the element | class name that you want to add
+
 addClassName('body', 'purple');
 
 // * 8) ########## Get email name ##########
 
-// Strip name before @ from user email | slice(0) starts from the beginning
+// ! Strip name before @ from user email | slice(0) starts from the beginning
 const getUserNameFromEmail = (email) => {
 	return email !== undefined
 		? email.slice(0, email.indexOf('@'))
 		: 'Cannot read / find email';
 };
-log(getUserNameFromEmail('mario@gotmail.com'));
+log(getUserNameFromEmail('mario@hotmail.com'));
